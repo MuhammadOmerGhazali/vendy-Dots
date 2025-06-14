@@ -1,0 +1,8 @@
+set $color1     #0b0c0c
+set $color2     #8e848c
+
+#app_id                          border          bground         text            indicator       child_border
+client.focused               $color2           $color2         $color1           $color2         $color2
+client.unfocused             $color2           $color1         $color2           $color1         $color1
+client.focused_inactive      $color2           $color1         $color2           $color1         $color1
+client.urgent                $color2           $color2         $color1           $color2         $color1

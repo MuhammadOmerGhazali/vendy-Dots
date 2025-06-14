@@ -1,0 +1,160 @@
+; eww config for bar
+
+(defwindow bar
+  :monitor 0
+  :geometry
+  (geometry
+    :x 0
+    :y 0
+    :width "15px"
+    :height "100%"
+    :anchor "center left"
+  )
+  :stacking "fg"
+  :exclusive "true"
+  :focusable "false"
+  (bar-widget)
+)
+
+(defwidget bar-widget []
+  (centerbox
+    :orientation "v"
+    (box
+      :valign "start"
+      :class "segment-top"
+      (top)
+    )
+    (box
+      :valign "center"
+      :class "middle"
+      (middle)
+    )
+    (box
+      :valign "end"
+      :class "segment-bottom"
+      (bottom)
+    )
+  )
+)
+
+(defwidget top []
+  (box
+    :orientation "v"
+    (workspaces)
+  )
+)
+(defwidget middle []
+  (box
+    :orientation "v"
+    (Time)
+  )
+)
+
+(defwidget bottom []
+  (box
+    :orientation "v"
+    (Dashboard_button)
+    (volume)
+    (battery)
+    (cpu)
+    (ram)
+    (tray)
+  )
+)
+
+; Workspaces 
+(deflisten workspaces :initial "[]" "python scripts/sway-workspaces.py")
+(defwidget workspaces []
+    (box
+        :orientation "v"
+        :class "workspaces"
+        (for wsp in workspaces
+          (button :class "${wsp.focused ? "active" : "inactive"}"
+                  :onclick "swaymsg workspace ${wsp.name}"
+            ""))
+    )
+)
+
+; System Tray
+(defwidget tray []
+  (box :class "tray"
+    (systray
+      :orientation "v"
+      :icon-size 20
+      :spacing 5
+    )
+    )
+  )
+
+
+; Time 
+(defpoll hour :interval "3m" "date +%H")
+(defpoll min  :interval "3s" "date +%M")
+
+(defwidget Time []
+  (box
+    :orientation "v"
+    :class "time"
+    hour
+    min
+  )
+)
+
+; Dashboard
+(defwidget Dashboard_button []
+  (button
+    :class "dashboard-button"
+    :vexpand false
+    :onclick "eww open dashboard"
+    (label
+      :text ""
+      :class "dashboard-button-icon"
+    )
+  )
+
+)
+
+; volume 
+(deflisten speakers :initial '{ "volume": 0, "muted": false }' "~/.config/eww/scripts/volumn.sh")
+(defwidget volume []
+  (metric :icon "${speakers.muted ? '' : ''}"
+          :font-size 0.8
+          :onclick "pavucontrol &"
+          :onrightclick "pamixer --toggle-mute"
+          "${speakers.volume}%"))
+
+; stats
+(defwidget metric [icon ?font-size]
+  (box :class "metric"
+       :orientation "v"
+    (label :class "metric-icon"
+           :style {font-size != "" ? "font-size: ${font-size}rem;" : ""}
+           :text icon)
+    (children)))
+
+(defwidget stats []
+  (box 
+    :class "stats"
+    :orientation "v"
+    (metric :icon "" "${round(EWW_RAM.used_mem_perc, 0)}%")
+    (metric :icon "" "${round(EWW_CPU.avg, 0)}%")
+  )
+)
+
+(defpoll battery_percent :interval "3s" "cat /sys/class/power_supply/BAT0/capacity")
+(defpoll battery_status :interval "1s" "cat /sys/class/power_supply/BAT0/status")
+(defwidget battery []
+  (metric :icon "${battery_status == 'Charging' ? '' : ''}"
+          :font-size 0.8
+          "${battery_percent}%")
+)
+(defwidget cpu []
+  (metric :icon ""
+          :font-size 0.8
+          "${round(EWW_CPU.avg, 0)}%")
+)
+(defwidget ram []
+  (metric :icon ""
+          :font-size 0.8
+          "${round(EWW_RAM.used_mem_perc, 0)}%")
+)

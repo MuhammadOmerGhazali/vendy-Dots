@@ -1,0 +1,22 @@
+(defwindow wallpaper-picker
+  :monitor 0
+  :geometry (geometry :x "0%" :y "0%" :width "80%" :height "80%" :anchor "center center")
+  :stacking "fg"
+  :focusable true
+  (box :class "wallpaper-picker" :orientation "v" :space-evenly false
+    (label :class "title" :text "Select a Wallpaper" :halign "center")
+    (scroll :vscroll true :hscroll false
+      (box :class "wallpaper-grid" :orientation "h" :space-evenly true :halign "center" :wrap true
+        "${wallpapers}"))))
+
+(defpoll wallpapers :interval "5s"
+  :run-while "test \"$EWW_WALLPICKER_OPEN\" = \"true\""
+  `(cat ~/.cache/vddf/wallpaper_list.txt | while read -r img; do
+      echo "(box :class \"wallpaper-item\" :orientation \"v\" :space-evenly false
+              (image :path \"$img\" :width 200 :height 120)
+              (label :text \"$(basename \"$img\" | cut -d'.' -f1)\" :limit-width 20 :halign \"center\")
+              (event-box :onclick \"bash /home/vendy/dotfiles/eww/scripts/set_wallpaper.sh '$img'\")
+            )"
+    done)`)
+
+(defvar EWW_WALLPICKER_OPEN "false")

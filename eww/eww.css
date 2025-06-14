@@ -1,0 +1,37 @@
+.wallpaper-picker {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.wallpaper-grid {
+  gap: 10px;
+  justify-content: center;
+}
+
+.wallpaper-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  padding: 5px;
+  transition: background-color 0.2s;
+}
+
+.wallpaper-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.wallpaper-item image {
+  border-radius: 5px;
+}
+
+.wallpaper-item label {
+  color: #ffffff;
+  font-size: 14px;
+  margin-top: 5px;
+}

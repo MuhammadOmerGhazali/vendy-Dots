@@ -1,0 +1,8 @@
+
+# Using the Sddm Themes From here 
+
+https://github.com/Keyitdev/sddm-astronaut-theme
+
+Use this for automatic install
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/keyitdev/sddm-astronaut-theme/master/setup.sh)"

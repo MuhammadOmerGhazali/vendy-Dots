@@ -1,0 +1,239 @@
+@import url("/home/vendy/.cache/wal/colors-waybar.css");
+
+/* ================================ */
+/*            Common CSS            */
+/* ================================ */
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    padding: 0;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    border: none;
+    text-shadow: none;
+    transition: none;
+    box-shadow: none;
+}
+
+/* the whole window */
+window#waybar {
+    background-color: rgba(0, 0, 0, 0.65);
+    color: @foreground;
+    padding: 0px 5px;
+    margin: 0;
+}
+
+.modules-left {
+    padding-left: 5px;
+}
+
+.modules-right {
+    padding-right: 5px;
+}
+#custom-rot8,
+#custom-rofi,
+#workspaces button,
+#workspaces button:hover,
+#workspaces button.visible,
+#workspaces button.visible:hover,
+#workspaces button.active,
+#workspaces button.active:hover,
+#workspaces button.urgent,
+#window,
+#tray,
+#disk,
+#cpu,
+#temperature,
+#temperature.critical,
+#backlight,
+#custom-memory,
+#pulseaudio,
+#pulseaudio.muted,
+#battery,
+#battery.critical,
+#battery.warning,
+#clock {
+    font-family: JetBrainsMono Nerd Font Propo;
+    font-size: 14px;
+    font-weight: 800;
+    color: @foreground;
+    background: @background;
+    /* box-shadow: -1px 2px 3px black; */
+}
+
+#window,
+#tray,
+#disk,
+#cpu,
+#temperature,
+#temperature.critical,
+#backlight,
+#custom-memory,
+#pulseaudio,
+#pulseaudio.muted,
+#battery,
+#battery.critical,
+#battery.warning,
+#clock {
+    padding-right: 4px;
+    margin: 5px 0px;
+}
+
+#custom-rofi {
+    border: 2px solid @color13;
+    background: @background;
+    padding: 0 6px;
+    margin: 5px 0px;
+}
+
+#custom-rot8 {
+    border: 2px solid @color13;
+    background: @background;
+    padding: 0 6px;
+    margin: 5px 0px;
+}
+/* ================================ */
+/*       workspaces module          */
+/* ================================ */
+#workspaces {
+    margin: 0px;
+}
+
+#workspaces button {
+    color: @foreground;
+    background: @background;
+    border: 2px solid @foreground;
+    min-width: 25px;
+    padding: 0 4px;
+    margin: 5px 3px;
+}
+
+#workspaces button:hover {
+    background: @color13;
+    border: 2px solid @color13;
+}
+
+#workspaces button.visible {
+    border: 2px solid @color13;
+    background: @background;
+}
+
+#workspaces button.visible:hover {
+    border: 2px solid @color13;
+    background: @color13;
+}
+
+#workspaces button.active {
+    border: 2px solid @color13;
+    background: @color13;
+}
+
+#workspaces button.active:hover {
+    border: 2px solid @color13;
+    background: @color13;
+}
+
+#workspaces button.urgent {
+    border: 2px solid @color13;
+    background: @color13;
+}
+
+/* ================================ */
+/*            window                 */
+/* ================================ */
+#window {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+/* ================================ */
+/*            tray                 */
+/* ================================ */
+#tray {
+    padding: 0 6px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ================================ */
+/*            disk                 */
+/* ================================ */
+#disk {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+/* ================================ */
+/*            cpu                  */
+/* ================================ */
+#cpu {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+/* ================================ */
+/*            temp                  */
+/* ================================ */
+#temperature {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+#temperature.critical {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+/* ================================ */
+/*            backlight             */
+/* ================================ */
+#backlight {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+/* ================================ */
+/*            memory                */
+/* ================================ */
+#custom-memory {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+/* ================================ */
+/*         pulseaudio               */
+/* ================================ */
+#pulseaudio {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+#pulseaudio.muted {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+/* ================================ */
+/*            battery               */
+/* ================================ */
+#battery {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+#battery.critical {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+#battery.warning {
+    color: @foreground;
+    border: 2px solid @color13;
+}
+
+/* ================================ */
+/*            clock                 */
+/* ================================ */
+#clock {
+    color: @foreground;
+    border: 2px solid @color13;
+}

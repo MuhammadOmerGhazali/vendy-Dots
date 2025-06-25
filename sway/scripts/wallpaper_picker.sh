@@ -12,5 +12,6 @@ if [[ -n "$WALLPAPER" ]]; then
 
 	pkill swaybg
 	swaybg -i "$WALLPAPER" -m fill &
+	wal -i "$(cat ~/.cache/vddf/+last_wallpaper)" 
 
 fi

@@ -1,9 +1,9 @@
-add zshrc fastdetch kitty waybar wal to dotfiles
+(done)add zshrc fastdetch kitty waybar wal to dotfiles
 theme rofi
 make wallpapaer picker
 make logout menu
-make volumn floating
-add rot8 to keybinding and waybar
+(done)make volumn floating
+(done)add rot8 to keybinding and waybar
 add readme.md
 
 (done)add virtual keyboard
@@ -11,3 +11,4 @@ fix wlogout
 add swaylock
 
 add logut to waybar
+put obsidan in w5
